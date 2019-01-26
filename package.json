@@ -19,7 +19,7 @@
   },
   "types": "./dist/index.d.ts",
   "author": "zcong1993",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
     "@types/jest": "^23.1.5",
