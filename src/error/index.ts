@@ -8,8 +8,8 @@ export class ApiError extends Error {
   constructor(
     message: string = 'INTERNAL_ERROR',
     code: string = 'INTERNAL_ERROR',
-    messages: string[] = [],
-    statusCode: number = 500
+    statusCode: number = 500,
+    messages: string[] = []
   ) {
     super(message)
     this.code = code
@@ -19,19 +19,19 @@ export class ApiError extends Error {
 }
 
 export const invalidInputApiError = (messages: string[]): ApiError =>
-  new ApiError('INVALID_INPUT', 'INVALID_INPUT', messages, 400)
+  new ApiError('INVALID_INPUT', 'INVALID_INPUT', 400, messages)
 
 export const unauthorizedApiError = new ApiError(
   'UNAUTHORIZED_ERROR',
   'UNAUTHORIZED_ERROR',
-  [],
-  401
+  401,
+  []
 )
 
 export const notFoundApiError = (
   message: string = 'NOT_FOUND',
   code: string = 'NOT_FOUND'
-): ApiError => new ApiError(message, code, [], 400)
+): ApiError => new ApiError(message, code, 400, [])
 
 /* istanbul ignore next */
 export const simpleErrorHandler = (): Koa.Middleware => async (ctx, next) => {
