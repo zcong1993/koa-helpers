@@ -11,3 +11,7 @@ it('test notFoundApiError', () => {
     new ApiError('NOT_FOUND', 'NOT_FOUND', [], 400)
   )
 })
+
+it('test ApiError', () => {
+  expect(new ApiError()).toBeInstanceOf(ApiError)
+})
