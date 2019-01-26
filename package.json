@@ -1,15 +1,14 @@
 {
   "name": "@zcong/koa-helpers",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "helpers set for koa",
   "main": "./dist/index.js",
   "files": [
-    "dist/**/*.js",
-    "dist/index.d.ts",
+    "dist",
     "src"
   ],
   "scripts": {
-    "build": "MIT",
+    "build": "tsc",
     "test": "npm run lint && npm run jest",
     "test:cov": "npm run lint && npm run jest:cov",
     "lint": "tslint -p .",
