@@ -9,10 +9,11 @@ export const validate = async (
   try {
     await joiValidate(data, schema)
   } catch (err) {
-    if (exposeDetail)
+    if (exposeDetail) {
       throw invalidInputApiError(
         (err as ValidationError).details.map(e => e.message)
       )
+    }
 
     throw invalidInputApiError([])
   }
