@@ -18,6 +18,21 @@ export class ApiError extends Error {
   }
 }
 
+export const invalidInputApiError = (messages: string[]): ApiError =>
+  new ApiError('INVALID_INPUT', 'INVALID_INPUT', messages, 400)
+
+export const unauthorizedApiError = new ApiError(
+  'UNAUTHORIZED_ERROR',
+  'UNAUTHORIZED_ERROR',
+  [],
+  401
+)
+
+export const notFoundApiError = (
+  message: string = 'NOT_FOUND',
+  code: string = 'NOT_FOUND'
+): ApiError => new ApiError(message, code, [], 400)
+
 export const simpleErrorHandler = (): Koa.Middleware => async (ctx, next) => {
   try {
     await next()
