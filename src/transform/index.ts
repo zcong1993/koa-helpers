@@ -1,8 +1,10 @@
-import { pick, omit, set, unset } from 'lodash'
+import { pick, omit, set, unset, get } from 'lodash'
 
 export type JsonObject = {
   [key: string]: any
 }
+
+export type TransformData = JsonObject | JsonObject[]
 
 export interface TransformOptions {
   picks?: string[]
@@ -13,9 +15,9 @@ export interface TransformOptions {
 }
 
 export const transform = (
-  data: JsonObject | JsonObject[],
+  data: TransformData,
   options: TransformOptions
-): JsonObject => {
+): TransformData => {
   if (Array.isArray(data)) {
     return data.map(d => transform(d, options))
   }
@@ -26,11 +28,11 @@ export const transform = (
     res = omit(data, options.omits)
   }
 
-  if (Object.keys(options.mapping).length > 0) {
+  if (options.mapping && Object.keys(options.mapping).length > 0) {
     Object.keys(options.mapping).forEach(k => {
-      if (res[k]) {
-        set(res, options.mapping[k], res[k])
-        unset(res, res[k])
+      if (get(res, k)) {
+        set(res, options.mapping[k], get(res, k))
+        unset(res, k)
       }
     })
   }
