@@ -1,0 +1,51 @@
+{
+  "name": "@zcong/koa-helpers",
+  "version": "0.0.0",
+  "description": "helpers set for koa",
+  "main": "./dist/index.js",
+  "files": [
+    "dist/**/*.js",
+    "dist/index.d.ts",
+    "src"
+  ],
+  "scripts": {
+    "build": "MIT",
+    "test": "npm run lint && npm run jest",
+    "test:cov": "npm run lint && npm run jest:cov",
+    "lint": "tslint -p .",
+    "format": "prettier --write '**/*.{ts,json,md}'",
+    "jest": "jest --detectOpenHandles --forceExit",
+    "jest:cov": "jest --coverage --detectOpenHandles --forceExit",
+    "prepublishOnly": "npm run build"
+  },
+  "types": "./dist/index.d.ts",
+  "author": "zcong1993",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^23.1.5",
+    "@types/koa": "^2.0.48",
+    "@types/node": "^10.5.2",
+    "jest": "^23.4.0",
+    "prettier": "^1.15.3",
+    "ts-jest": "^23.0.0",
+    "tslint": "^5.8.0",
+    "tslint-config-airbnb": "^5.4.2",
+    "tslint-config-prettier": "^1.17.0",
+    "typescript": "^3.2.4"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
+}
