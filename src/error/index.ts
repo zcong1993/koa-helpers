@@ -48,7 +48,11 @@ export const simpleErrorHandler = (): Koa.Middleware => async (ctx, next) => {
       }
     } else {
       ctx.status = 500
-      ctx.body = new ApiError()
+      ctx.body = {
+        code: 'INTERNAL_ERROR',
+        message: 'INTERNAL_ERROR',
+        messages: []
+      }
     }
   }
 }
