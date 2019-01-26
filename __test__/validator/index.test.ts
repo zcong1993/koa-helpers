@@ -14,15 +14,12 @@ it('validate should works well', async () => {
   }
 
   await expect(validate(testData, schema)).rejects.toThrow(
-    new ApiError(
-      'INVALID_INPUT',
-      'INVALID_INPUT',
-      ['"name" length must be at least 6 characters long'],
-      400
-    )
+    new ApiError('INVALID_INPUT', 'INVALID_INPUT', 400, [
+      '"name" length must be at least 6 characters long'
+    ])
   )
 
   await expect(validate(testData, schema, false)).rejects.toThrow(
-    new ApiError('INVALID_INPUT', 'INVALID_INPUT', [], 400)
+    new ApiError('INVALID_INPUT', 'INVALID_INPUT', 400, [])
   )
 })
