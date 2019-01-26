@@ -33,6 +33,7 @@ export const notFoundApiError = (
   code: string = 'NOT_FOUND'
 ): ApiError => new ApiError(message, code, [], 400)
 
+/* istanbul ignore next */
 export const simpleErrorHandler = (): Koa.Middleware => async (ctx, next) => {
   try {
     await next()
