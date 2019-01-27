@@ -37,7 +37,7 @@ const run = async () => {
 }
 ```
 
-### [./transform](./src/transform)
+### [transform](./src/transform)
 
 ```js
 const { transform } = require('@zcong/koa-helpers')
