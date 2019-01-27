@@ -78,16 +78,14 @@ const Joi = require('joi')
 const { validate } = require('@zcong/koa-helpers')
 
 const schema = Joi.object().keys({
-    name: Joi.string()
-      .alphanum()
-      .min(6)
-      .required()
-  })
+  name: Joi.string()
+    .alphanum()
+    .min(6)
+    .required()
+})
 
 const run = async () => {
-  await validate({ name: 'test' }, schema) // throw new ApiError('INVALID_INPUT', 'INVALID_INPUT', 400, [
-      '"name" length must be at least 6 characters long'
-    ])
+  await validate({ name: 'test' }, schema) // throw new ApiError('INVALID_INPUT', 'INVALID_INPUT', 400, ['"name" length must be at least 6 characters long'])
 }
 ```
 
