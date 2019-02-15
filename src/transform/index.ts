@@ -19,7 +19,10 @@ export const transform = (
   options: TransformOptions
 ): TransformData => {
   if (Array.isArray(data)) {
-    return data.map(d => transform(d, options))
+    return data.reduce((arr, d) => {
+      arr.push(transform(d, options))
+      return arr
+    }, [])
   }
   let res: JsonObject = data
   if (Array.isArray(options.picks) && options.picks.length > 0) {
